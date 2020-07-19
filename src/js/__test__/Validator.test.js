@@ -1,4 +1,4 @@
-import Validator from '../app';
+import Validator from '../Validator';
 
 const user = new Validator();
 test('check name 1', () => {
@@ -74,6 +74,76 @@ test('check name 10', () => {
 test('check name 11', () => {
   const name = 'Di333ma+';
   const expected = 'Ok';
+  const received = user.validateUsername(name);
+  expect(received).toBe(expected);
+});
+
+test('check name 12', () => {
+  const name = 'M&M`s';
+  const expected = 'Name is invalid';
+  const received = user.validateUsername(name);
+  expect(received).toBe(expected);
+});
+
+test('check name 13', () => {
+  const name = 'M#M`s';
+  const expected = 'Name is invalid';
+  const received = user.validateUsername(name);
+  expect(received).toBe(expected);
+});
+
+test('check name 14', () => {
+  const name = 'M(M`s';
+  const expected = 'Name is invalid';
+  const received = user.validateUsername(name);
+  expect(received).toBe(expected);
+});
+
+test('check name 15', () => {
+  const name = 'M)M`s';
+  const expected = 'Name is invalid';
+  const received = user.validateUsername(name);
+  expect(received).toBe(expected);
+});
+
+test('check name 16', () => {
+  const name = 'Ё';
+  const expected = 'Name is invalid';
+  const received = user.validateUsername(name);
+  expect(received).toBe(expected);
+});
+
+test('check name 17', () => {
+  const name = 'M`';
+  const expected = 'Name is invalid';
+  const received = user.validateUsername(name);
+  expect(received).toBe(expected);
+});
+
+test('check name 18', () => {
+  const name = '$';
+  const expected = 'Name is invalid';
+  const received = user.validateUsername(name);
+  expect(received).toBe(expected);
+});
+
+test('check name 19', () => {
+  const name = '?';
+  const expected = 'Name is invalid';
+  const received = user.validateUsername(name);
+  expect(received).toBe(expected);
+});
+
+test('check name 20', () => {
+  const name = '!';
+  const expected = 'Name is invalid';
+  const received = user.validateUsername(name);
+  expect(received).toBe(expected);
+});
+
+test('check name 21', () => {
+  const name = '@';
+  const expected = 'Name is invalid';
   const received = user.validateUsername(name);
   expect(received).toBe(expected);
 });
